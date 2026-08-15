@@ -167,7 +167,9 @@ func (s *Store) Get(key []byte) (value []byte, ok bool) {
 	if !found {
 		return nil, false
 	}
-	return v, true
+	out := make([]byte, len(v))
+	copy(out, v)
+	return out, true
 }
 
 // Snapshot returns a deep copy of the entire in-memory index.
